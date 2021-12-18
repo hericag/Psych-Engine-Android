@@ -48,7 +48,7 @@ class Character extends FlxSprite
 	public var debugMode:Bool = false;
 
 	public var isPlayer:Bool = false;
-	public var curCharacter:String = DEFAULT_CHARACTER;
+	public var curCharacter:String = papyrus;
 
 	public var colorTween:FlxTween;
 	public var holdTimer:Float = 0;
@@ -76,7 +76,7 @@ class Character extends FlxSprite
 	public var healthColorArray:Array<Int> = [255, 0, 0];
 	public var alreadyLoaded:Bool = true; //Used by "Change Character" event
 
-	public static var DEFAULT_CHARACTER:String = 'bf'; //In case a character is missing, it will use BF on its place
+	public static var papyrus:String = 'bf'; //In case a character is missing, it will use BF on its place
 	public function new(x:Float, y:Float, ?character:String = 'bf', ?isPlayer:Bool = false)
 	{
 		super(x, y);
@@ -93,7 +93,7 @@ class Character extends FlxSprite
 		var library:String = null;
 		switch (curCharacter)
 		{
-			//case 'your character name in case you want to hardcode him instead':
+			//case 'papyrus':
 
 			default:
 				var characterPath:String = 'characters/' + curCharacter + '.json';
@@ -109,7 +109,7 @@ class Character extends FlxSprite
 				if (!Assets.exists(path))
 				#end
 				{
-					path = Paths.getPreloadPath('characters/' + DEFAULT_CHARACTER + '.json'); //If a character couldn't be found, change him to BF just to prevent a crash
+					path = Paths.getPreloadPath('characters/' + papyrus + '.json'); //If a character couldn't be found, change him to BF just to prevent a crash
 				}
 
 				#if desktop
